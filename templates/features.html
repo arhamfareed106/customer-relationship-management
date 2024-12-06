@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="text-gray-400 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="text-center mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">CRM Features</h1>
+            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+                Discover all the powerful features that help you manage your leads and grow your business.
+            </p>
+            <div class="flex mt-6 justify-center">
+                <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+            </div>
+        </div>
+
+        <!-- Lead Management Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-medium text-white mb-4">📊 Lead Management</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Lead Tracking</h3>
+                    <p>Track and manage leads through their entire lifecycle. Organize leads by status, priority, and custom categories.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Lead Categories</h3>
+                    <p>Categorize leads as New, Contacted, In Progress, Lost, or Converted. Create custom categories to match your workflow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard & Analytics Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-medium text-white mb-4">📈 Dashboard & Analytics</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Real-time Dashboard</h3>
+                    <p>Get instant insights with our dynamic dashboard. View total leads, recent additions, and conversion rates.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Performance Metrics</h3>
+                    <p>Track key metrics including lead conversion rates, activity levels, and team performance indicators.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Management Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-medium text-white mb-4">👥 Team Management</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Agent Assignment</h3>
+                    <p>Easily assign leads to team members and track their progress. Balance workload across your team.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Role-based Access</h3>
+                    <p>Control access with role-based permissions. Separate views for agents and organizers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Tools Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-medium text-white mb-4">💬 Communication Tools</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Follow-up Tracking</h3>
+                    <p>Log and track all follow-up activities with leads. Set reminders and track communication history.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Email Integration</h3>
+                    <p>Receive notifications and updates via email. Stay informed about important lead activities.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- UI/UX Features Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-medium text-white mb-4">🎨 Modern UI/UX</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Dark Theme</h3>
+                    <p>Eye-friendly dark theme with modern aesthetics. Reduced eye strain for extended use.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="text-xl text-white mb-2">Responsive Design</h3>
+                    <p>Fully responsive layout that works on all devices. Seamless experience on desktop and mobile.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <a href="{% url 'leads:lead-list' %}" class="btn inline-flex items-center">
+                Start Managing Leads
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .feature-item {
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        background-color: rgba(45, 45, 45, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+        transform: translateY(-4px);
+        background-color: rgba(45, 45, 45, 0.8);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+</style>
+{% endblock content %}

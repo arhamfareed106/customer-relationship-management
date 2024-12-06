@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-900 py-6">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                {% if form.instance.pk %}
+                    Edit Agent
+                {% else %}
+                    Create Agent
+                {% endif %}
+            </h1>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+            <div class="p-6">
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="space-y-2">
+                        <label for="{{ field.id_for_label }}" 
+                               class="block text-sm font-medium text-gray-300">
+                            {{ field.label }}
+                        </label>
+                        <div class="mt-1">
+                            {% if field.errors %}
+                            <div class="relative">
+                                {{ field }}
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                        </div>
+                        {% if field.errors %}
+                        <div class="mt-1">
+                            {% for error in field.errors %}
+                            <p class="text-sm text-red-500">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if field.help_text %}
+                        <p class="text-gray-400 text-sm mt-1">
+                            {{ field.help_text }}
+                        </p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="flex justify-end space-x-3 pt-6">
+                        <a href="{% url 'agents:agent-list' %}" 
+                           class="btn-secondary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn-primary">
+                            {% if form.instance.pk %}
+                                Update Agent
+                            {% else %}
+                                Create Agent
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
